@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: httpd-deployment
 spec:  
-  replicas: 3 
+  replicas: 2 
   selector:
     matchLabels:
       app: httpd
@@ -16,7 +16,7 @@ spec:
       - name: httpdapp
         image: httpd
         ports:
-        - containerPort: 90
+        - containerPort: 80
 ---
 #Service config
 apiVersion: v1
@@ -30,5 +30,5 @@ spec:
   ports:
   - protocol: TCP
     port: 8090
-    targetPort: 90
+    targetPort: 80
         
