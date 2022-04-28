@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: httpdapp
-        image: padybuzz/custom_httpd
+        image: padybuzz/custom_httpd:latest
         ports:
         - containerPort: 80
 ---
