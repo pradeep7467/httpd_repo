@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+spec:  
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpdapp
+        image: httpd
+        ports:
+        - containerPort: 90
+---
+#Service config
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: httpd
+  ports:
+  - protocol: TCP
+    port: 8090
+    targetPort: 90
+        
